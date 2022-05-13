@@ -1,0 +1,23 @@
+﻿@model PropertyListViewModel
+
+<div class="row form-group justify-content-center">
+    <h2 class="text-center">Choose properties:</h2>
+    <div class="d-flex gap-5 justify-content-center  mt-2">
+        <form asp-action="PropsList" asp-route-mode="@ViewBag.Mode" asp-route-elemId="@ViewBag.ElemId" asp-controller="Properties" method="post">
+            @foreach (var item in Model.AvailableProps)
+            {
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"
+                           name="SelectedProps"
+                           value="@item.Value" /> @Html.Raw(item.Text)
+                    </label>
+                </div>
+            }
+
+            <div class="d-grid gap-2 mx-auto mt-3">
+                <input type="submit" class="btn btn-primary" value="Choose" />
+            </div>
+        </form>
+    </div>
+</div>

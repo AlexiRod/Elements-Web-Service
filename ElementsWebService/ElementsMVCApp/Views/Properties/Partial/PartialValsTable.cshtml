@@ -1,0 +1,52 @@
+﻿@using System.Web
+
+@model List<IProperty>
+
+<div class="row justify-content-center mt-3">
+    @{
+        string header = ViewBag.Mode == 3 ? "Values" : "Recomended values";
+        string unit = string.IsNullOrEmpty(Model[0].Unit) ? "" : $"({Model[0].Unit.Trim('(', ')', '[', ']')})";
+    }
+    <h3>@Html.Raw($"{header} of {Model[0].Name} {unit}:")</h3>
+
+
+    @if (Model.Count != 0)
+    {
+        bool isRadiiIonic = Model[0] is RIProperty;
+        <table class="table table-striped" >
+            <thead class="thead-dark">
+                <tr>
+                    <th>Element</th>
+                    <th>Value</th>
+                    @if (isRadiiIonic)
+                    {
+                        <th>Charge</th>
+                        <th>CN</th>
+                    }
+                    <th>Comments</th>
+                    <th>Reference</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@Model[i].ElementSymbol</td>
+                        <td>@Html.Raw(Model[i].GetFormattedValue())</td>
+                        @if (isRadiiIonic)
+                        {
+                            <td>@(((RIProperty)Model[i]).Charge)</td>
+                            <td>@(((RIProperty)Model[i]).CN)</td>
+                        }
+                        <td>@Html.Raw(Model[i].Comments)</td>
+                        <td><a asp-action="LitRef" asp-route-id="@Model[i].Reference" target="_blank">@Model[i].Reference</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h4>No values for this property</h4>
+    }
+</div>

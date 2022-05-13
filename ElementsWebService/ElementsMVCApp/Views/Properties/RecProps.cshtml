@@ -1,0 +1,43 @@
+﻿@model PropertyTableViewModel
+
+
+<div class="row justify-content-center mt-3">
+    <h3>Recomended values:</h3>
+   
+    @if (Model.Properties.Count != 0 && Model.Elements.Count != 0)
+    {
+        <div class="d-grid gap-2 mx-auto mt-3 justify-content-end">
+            <a asp-controller="Properties" asp-action="Export" class="btn btn-primary" >Export as CSV</a>
+        </div>
+        <table class="table table-striped mt-2">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Element</th>
+                    @for (int j = 0; j < Model.Properties.Count; j++)
+                    {
+                        <th>@Html.Raw(Model.Properties[j])</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Elements.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Elements[i]</td>
+                        @for (int j = 0; j < Model.Properties.Count; j++)
+                        {
+                            <td>@Model.Values[i][j].ToString("0.##############")</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h4 class="text-center">There is no recomended properties/values for selected properties</h4>
+         <div class="d-grid col-4 gap-2 mx-auto mt-3">
+            <a asp-controller="Properties" asp-action="PropsList" asp-route-mode="4" class="btn btn-primary" >Select properties</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\HSE\\Курсач\\Developing\\ElementsWebService\\ElementsClassLibrary\\ElementsClassLibrary.csproj": {}
+  },
+  "projects": {
+    "D:\\HSE\\Курсач\\Developing\\ElementsWebService\\ElementsClassLibrary\\ElementsClassLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\HSE\\Курсач\\Developing\\ElementsWebService\\ElementsClassLibrary\\ElementsClassLibrary.csproj",
+        "projectName": "ElementsClassLibrary",
+        "projectPath": "D:\\HSE\\Курсач\\Developing\\ElementsWebService\\ElementsClassLibrary\\ElementsClassLibrary.csproj",
+        "packagesPath": "C:\\Users\\Ax\\.nuget\\packages\\",
+        "outputPath": "D:\\HSE\\Курсач\\Developing\\ElementsWebService\\ElementsClassLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Ax\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.105\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

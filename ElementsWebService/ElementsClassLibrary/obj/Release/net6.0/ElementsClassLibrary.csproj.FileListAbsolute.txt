@@ -1,0 +1,12 @@
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\bin\Release\net6.0\ElementsClassLibrary.deps.json
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\bin\Release\net6.0\ElementsClassLibrary.dll
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\bin\Release\net6.0\ref\ElementsClassLibrary.dll
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\bin\Release\net6.0\ElementsClassLibrary.pdb
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\obj\Release\net6.0\ElementsClassLibrary.csproj.AssemblyReference.cache
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\obj\Release\net6.0\ElementsClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\obj\Release\net6.0\ElementsClassLibrary.AssemblyInfoInputs.cache
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\obj\Release\net6.0\ElementsClassLibrary.AssemblyInfo.cs
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\obj\Release\net6.0\ElementsClassLibrary.csproj.CoreCompileInputs.cache
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\obj\Release\net6.0\ElementsClassLibrary.dll
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\obj\Release\net6.0\ref\ElementsClassLibrary.dll
+D:\HSE\Курсач\Developing\ElementsWebService\ElementsClassLibrary\obj\Release\net6.0\ElementsClassLibrary.pdb

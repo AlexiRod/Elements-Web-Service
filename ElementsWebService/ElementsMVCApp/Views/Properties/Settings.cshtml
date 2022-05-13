@@ -1,0 +1,31 @@
+﻿@model SettingsViewModel
+
+<div class="row form-group justify-content-center">
+    <h2 class="text-center">Choose settings:</h2>
+    <div class="d-flex gap-5 justify-content-center mt-2">
+        <form asp-action="Settings" method="post">
+            @for (int i = 0; i < Model.Units.Count; i++)
+            {
+                <div class="container p-3 my-3 border">
+                    @{
+                        string first = @Model.Units[i].Item1.IsSelected ? "checked=\"checked\"" : "";
+                        string second = @Model.Units[i].Item2.IsSelected ? "checked=\"checked\"" : "";
+                        string name = "SelectedUnits[" + i + "]";
+                    }
+                    <div class="form-check">
+                        <input class="form-check-input" name="@name" type="radio" value="@Model.Units[i].Item1.Id" @first>
+                        <label class="form-check-label" for="@name">@Html.Raw(Model.Units[i].Item1.Id)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="@name" type="radio" value="@Model.Units[i].Item2.Id" @second>
+                        <label class="form-check-label" for="@name">@Html.Raw(Model.Units[i].Item2.Id)</label>
+                    </div>
+                </div>                                                                                      
+            }
+
+            <div class="d-grid gap-2 mx-auto mt-3">
+                <input type="submit" class="btn btn-primary" value="Choose" />
+            </div>
+        </form>
+    </div>
+</div>

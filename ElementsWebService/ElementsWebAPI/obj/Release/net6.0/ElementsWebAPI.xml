@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ElementsWebAPI</name>
+    </assembly>
+    <members>
+        <member name="F:ElementsWebAPI.Controllers.PropertiesController._logger">
+            <summary>
+            Логгер для отлавливания ошибок сервера.
+            </summary>
+        </member>
+        <member name="F:ElementsWebAPI.Controllers.PropertiesController._propertyRepository">
+            <summary>
+            Репозиторий для работы с базой данных.
+            </summary>
+        </member>
+        <member name="F:ElementsWebAPI.Controllers.PropertiesController.settings">
+            <summary>
+            Настройки сериализатора с автоматическим TypeNameHandling
+            </summary>
+        </member>
+        <member name="F:ElementsWebAPI.Controllers.PropertiesController.objectSettings">
+            <summary>
+            Настройки сериализатора с объектным TypeNameHandling
+            </summary>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GivenPropValuesByIdOrRecQuery(System.String,System.Boolean,System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
+            <summary>
+            Вспомогательный метод для получения всех значений выбранного свойства с опцией рекомендуемых и диапозона.
+            </summary>
+            <param name="propId">Id свойства.</param>
+            <param name="isRecomended">Флаг, показывающий, необходимо ли взять все значения или только рекомендуемые.</param>
+            <param name="left">Левая граница диапозона (опционально).</param>
+            <param name="right">Правая граница диапозона (опционально).</param>
+            <returns>Список (в зависимости от флага) значений свойства.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ElementsWebAPI.Controllers.PropertiesController.GivenPropsValuesOrRecQuery(System.Collections.Generic.List{System.String},System.Boolean)" -->
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetLiteratureReference(System.String)">
+            <summary>
+            Получение библиотечной информации по заданной литературной ссылке.
+            </summary>
+            <param name="id">Id ссылки.</param>
+            <returns>Строка с информацией по данному ресурсу.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetUnits">
+            <summary>
+            Получение единиц измерения.
+            </summary>
+            <returns>Два словаря - пары ЕИ1-ЕИ2 и пары Выбранная_ЕИ-Unit.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetAllElements">
+            <summary>
+            Получение всех элементов с основыми свойствами.
+            </summary>
+            <returns>Список всех элементов таблицы Менделеева.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetAllPropertiesNames">
+            <summary>
+            Получение всех свойств с их Id, названием и типом.
+            </summary>
+            <returns>Список всех свойств в формате Id, Название, Тип.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetAllPropsOfGivenElem(System.Int32)">
+            <summary>
+            Получение всех свойств выбранного элемента (Режим 1).
+            </summary>
+            <param name="id">Id элемента.</param>
+            <returns>Список всех значений всех свойств выбранного элемента.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetGivenPropOfGivenElem(System.Int32,System.String)">
+            <summary>
+            Получение значения выбранного свойства выбранного элемента (Подрежим 2).
+            </summary>
+            <remarks>
+            Важно: Возвращается список, так как для одного Id свойства могут быть разные значения. Например:
+            Melting temperature (разные значения из разных источников) Radii Ionic ... (разные значения для разных зарядов)
+            </remarks>
+            <param name="elemId">Id элемента.</param>
+            <param name="propId">Id свойства.</param>
+            <returns>Список всех значений выбранного свойства для выбранного элемента.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetGivenPropsOfGivenElem(System.Int32,System.Collections.Generic.List{System.String})">
+            <summary>
+            Получение значений выбранных из списка свойств выбранного элемента (Режим 2).
+            </summary>
+            <param name="elemId">Id элемента.</param>
+            <param name="propsId">Список Id выбранных свойств</param>
+            <returns>Список выбранных свойств выбранного элемента.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="400">Список Id свойств не указан.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetGivenPropValuesById(System.String)">
+            <summary>
+            Получение значений выбранного свойства для всех элементов таблицы Менделеева (Подрежим 3).
+            </summary>
+            <param name="propId">Id свойства</param>
+            <returns>Список всех значений свойства.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetGivenPropsValues(System.Collections.Generic.List{System.String})">
+            <summary>
+            Получение значений выбранных из списка свойств для всех элементов таблицы Менделеева (Режим 3).
+            </summary>
+            <param name="propsId">Список Id выбранных свойств</param>
+            <returns>Словарь значений свойств.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="400">Список Id свойств не указан.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetGivenPropOfGivenElemRec(System.String)">
+            <summary>
+            Получение рекомендуемых значений выбранного свойства для всех элементов таблицы Менделеева (Подрежим 4).
+            </summary>
+            <param name="propId">Id свойства.</param>
+            <returns>Список рекомендуемых значений свойства.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetGivenPropsOfGivenElemRec(System.Collections.Generic.List{System.String})">
+            <summary>
+            Получение рекомендуемых значений выбранных из списка свойств для всех элементов таблицы Менделеева (Режим 4).
+            </summary>
+            <param name="propsId">Список Id выбранных свойств</param>
+            <returns>Словарь рекомендуемых значений.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="400">Список Id свойств не указан.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetGivenPropOfGivenElemQuery(System.String,System.Decimal,System.Decimal)">
+            <summary>
+            Получение значений выбранного свойства из заданного диапозона для всех элементов таблицы Менделеева (Подрежим 5).
+            </summary>
+            <param name="propId">Id свойства.</param>
+            <param name="left">Левая граница диапозона (опционально).</param>
+            <param name="right">Правая граница диапозона (опционально).</param>
+            <returns>Список рекомендуемых значений свойства.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="M:ElementsWebAPI.Controllers.PropertiesController.GetGivenPropsOfGivenElemQuery(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Decimal},System.Collections.Generic.List{System.Decimal})">
+            <summary>
+            Получение значений выбранных из списка свойств из заданного диапозона для всех элементов таблицы Менделеева (Режим 5).
+            </summary>
+            <param name="propsId">Список Id выбранных свойств</param>
+            <param name="lefts">Левая граница диапозона (опционально).</param>
+            <param name="rights">Правая граница диапозона (опционально).</param>
+            <returns>Словарь рекомендуемых значений с учетом диапозона.</returns>
+            <response code="200">Успешное выполнение.</response>
+            <response code="400">Параметры списков для запроса заданы неверно.</response>
+            <response code="500">Ошибка на стороне сервиса.</response>
+        </member>
+        <member name="T:ElementsWebAPI.Entities.DapperContext">
+            <summary>
+            Контекст базы данных для работы Dapper
+            </summary>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.DapperContext.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Конструктор для задания конфигурации сервиса
+            </summary>
+            <param name="configuration">Конфигурация сервиса</param>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.DapperContext.#ctor(System.String)">
+            <summary>
+            Конструктор для тестирования.
+            </summary>
+            <param name="connection">Строка подключения к БД</param>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.DapperContext.CreateConnection">
+            <summary>
+            Создание подключения к БД через данные из ConnectionString
+            </summary>
+            <returns>Соединение с БД</returns>
+        </member>
+        <member name="T:ElementsWebAPI.Entities.PropertyRepository">
+            <summary>
+            Класс репозитория, работающего с БД
+            </summary>
+        </member>
+        <member name="F:ElementsWebAPI.Entities.PropertyRepository._context">
+            <summary>
+            Контекст для работы с базой данных.
+            </summary>
+        </member>
+        <member name="F:ElementsWebAPI.Entities.PropertyRepository.riPropIds">
+            <summary>
+            Список Id свойств ионного радиуса, имеющими дополнительные значения.
+            </summary>
+        </member>
+        <member name="F:ElementsWebAPI.Entities.PropertyRepository.propIds">
+            <summary>
+            Список Id таблиц для организации запросов к БД.
+            </summary>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.#ctor(ElementsWebAPI.Entities.DapperContext)">
+            <summary>
+            Конструктор с определением контекста, списка таблиц и конвертируемых единиц измерения.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.GetLiteratureReference(System.String)">
+            <summary>
+            Метод получения информации об источнике по заданной ссылке
+            </summary>
+            <param name="id">Номер ссылки</param>
+            <returns>Информация об источнике по ссылке</returns>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.GetUnitsAndPairs">
+            <summary>
+            Метод чтения из БД и установки пар конвертируемых ЕИ а также уравнения конвертации.
+            </summary>
+            /// <remarks>
+            Важно: Так как готовые таблицы были сочтены некорректными и неподходящими для работы, было принято решение 
+            о создании двух вспомогательных таблиц rUnits и rUnitConv для правильной и удобной работой с ЕИ.
+            Одна хранит Id конвертируемой величины, первую ЕИ, вторую ЕИ, уравнение конвертации.
+            Вторая хранит Id свойства, его название, Id конвертируемой величины, в которой измеряется свойство.
+            </remarks>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.GetAllElements">
+            <summary>
+            Все элементы таблицы Менделеева с основными свойствами.
+            </summary>
+            <returns>Список всех элементов.</returns>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.GetAllPropertiesNames">
+            <summary>
+            Все свойства из БД в формате Id, Название, Тип
+            </summary>
+            <returns>Список всех свойств, где Id, Name и Value - значения Id, Названия и Типа свойства.</returns>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.GetAllPropertiesOfElementById(System.Int32)">
+            <summary>
+            Все свойства выбранного из таблицы элемента.
+            </summary>
+            <param name="id">Id элемента.</param>
+            <returns>Список всех значений всех свойств выбранного элемента.</returns>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.GetGivenPropertyOfElementByIds(System.Int32,System.String)">
+            <summary>
+            Конкретное свойство по Id для выбранного элемента по Id.
+            </summary> /// 
+            <param name="elemId">Id элемента.</param>
+            <param name="propId">Id свойства.</param>
+            <returns>Список всех значений конкретного свойства для выбранного элемента.</returns>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.GetGivenPropertiesOfElementById(System.Int32,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Выбранные свойства выбранного элемента.
+            </summary>
+            <param name="elemId">Id элемента.</param>
+            <param name="propsId">Список Id выбранных свойств</param>
+            <returns>Список выбранных свойств выбранного элемента.</returns>
+        </member>
+        <member name="M:ElementsWebAPI.Entities.PropertyRepository.GetGivenPropertyValuesById(System.String,System.Boolean,System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
+            <summary>
+            Значения конкретного свойства для всех элементов с возможностью выбора рекомендованного значения и диапозона значений.
+            </summary>
+            <param name="propId">Id свойства.</param>
+            <param name="isRecomended">Флаг: все значения | рекомендованные значения.</param>
+            <param name="left">Левая граница диапозона (опционально).</param>
+            <param name="right">Правая граница диапозона (опционально).</param>
+            <returns>Список всех значений свойства.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ElementsWebAPI.Entities.PropertyRepository.GetGivenPropertiesValues(System.Collections.Generic.IEnumerable{System.String},System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:ElementsWebAPI.Entities.PropertyRepository.GetGivenPropertiesValuesWithQuery(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Collections.Generic.IEnumerable{System.Decimal},System.Collections.Generic.IEnumerable{System.Decimal})" -->
+    </members>
+</doc>

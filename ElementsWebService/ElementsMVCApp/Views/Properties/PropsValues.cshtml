@@ -1,0 +1,47 @@
+﻿<script type="text/javascript">
+    window.onload = function()
+    {
+        $.ajax({
+          url: '/Properties/Partial?id=' + '@Html.Raw(ViewBag.FirstId)' + '&mode=' + @ViewBag.Mode,
+          dataType: 'html',
+          success: function(data) {
+             $('#loading-div-background').hide();
+             $('#tableContainer').html(data);
+          }
+        });
+    }
+
+    function propChanged(value)
+    {
+        $('#loading-div-background').show();
+        $('#tableContainer').hide();
+        $('#list').prop('disabled',true);
+        $.ajax({
+          url: '/Properties/Partial?id=' + value + '&mode=' + @ViewBag.Mode,
+          dataType: 'html',
+          success: function(data) {
+             $('#loading-div-background').hide();
+             $('#tableContainer').show();
+             $('#list').prop('disabled',false);
+             $('#tableContainer').html(data);
+          }
+        });
+    }
+</script>
+
+
+<div class="row">
+    <div class="col-8">
+        <select id="list" class="form-select" onmousedown="this.value='';" onchange="propChanged(this.value);">
+            @foreach (var item in ViewBag.Dict)
+            {
+                <option value='@item.Key'>@item.Value</option>
+            }
+        </select>
+    </div>
+
+    <div class="col-4 mx-auto">
+        <a asp-action="PropsList" asp-route-mode="3" class="btn btn-primary" type="button">Change properties</a>
+    </div>
+</div>
+<div id="tableContainer"></div>

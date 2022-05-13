@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "97c1ac6e-0b2c-49c5-9c61-46d3d56066bc": {
+      "ProjectGuid": "97c1ac6e-0b2c-49c5-9c61-46d3d56066bc",
+      "DisplayName": "ElementsWebAPI",
+      "ColorIndex": 0
+    },
+    "f3c975b9-5863-476b-a48d-cb833c976f76": {
+      "ProjectGuid": "f3c975b9-5863-476b-a48d-cb833c976f76",
+      "DisplayName": "ElementsClassLibrary",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    },
+    "8ba4e999-ffd5-40c2-9b1c-d278ea81a79a": {
+      "ProjectGuid": "8ba4e999-ffd5-40c2-9b1c-d278ea81a79a",
+      "DisplayName": "ElementsMVCApp",
+      "ColorIndex": 2
+    },
+    "aacf7692-2cd0-409a-b74b-fedd4609c1ee": {
+      "ProjectGuid": "aacf7692-2cd0-409a-b74b-fedd4609c1ee",
+      "DisplayName": "ElementsConsole",
+      "ColorIndex": 3
+    },
+    "32a768fd-8dc6-4201-9c94-bb6ce365b61b": {
+      "ProjectGuid": "32a768fd-8dc6-4201-9c94-bb6ce365b61b",
+      "DisplayName": "ElementsTest",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

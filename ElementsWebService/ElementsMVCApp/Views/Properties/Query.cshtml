@@ -1,0 +1,71 @@
+﻿@model QueryListViewModel
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="row form-group justify-content-center">
+    <div class="row"></div>
+
+    @if (Model.Queries != null && Model.Queries.Count != 0)
+    {
+            <h2 class="text-center">Enter ranges:</h2>
+            <div class="col-6 justify-content-center mt-2">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <form asp-action="Query" method="post">
+                @for (int i = 0; i < Model.Queries.Count; i++)
+                {
+                    @Html.Hidden($"Queries[{i}].PropId", Model.Queries[i].PropId)
+                    @Html.Hidden($"Queries[{i}].Property", Model.Queries[i].Property)
+                            <div class="card">
+                                <div class="card-header text-center">@Html.Raw(Model.Queries[i].Property + (string.IsNullOrEmpty(ViewBag.Units[i]) ? "" : $" ({ViewBag.Units[i]})"))</div>
+                                <div class="card-body">
+                            @{
+                                string left = $"Queries[{i}].Left";
+                                string right = $"Queries[{i}].Right";
+                            }
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <input class="form-control text-box single-line valid" data-val="true"
+                                   data-val-regex-pattern="^-?\d+([,]\d{1,})?$"
+                                   data-val-regex="Left border should be a numver separated by comma"
+                                   id="@left" name="@left" type="text"
+                                   aria-describedby="@left-error" aria-invalid="false" placeholder="0,0">
+                                            <span class="text-danger field-validation-valid" data-valmsg-for="@left" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <div class="col-4">
+                                            <blockquote class="blockquote text-center">
+                                                <p>≤ Value ≤</p>
+                                            </blockquote>
+                                        </div>
+                                        <div class="col-4">
+                                            <input class="form-control text-box single-line valid" data-val="true"
+                                   data-val-regex-pattern="^-?\d+([,]\d{1,})?$"
+                                   data-val-regex="Right border should be a numver separated by comma"
+                                   id="@right" name="@right" type="text"
+                                   aria-describedby="@right-error" aria-invalid="false" placeholder="0,0">
+                                            <span class="text-danger field-validation-valid" data-valmsg-for="@right" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                }
+                    <div class="d-grid gap-2 mx-auto mt-3">
+                        <input type="submit" class="btn btn-primary" value="Submit" />
+                    </div>
+                </form>
+            </div>
+    }
+    else
+    {
+            <h4 class="text-center">There is no selected properties for query</h4>
+            <div class="d-grid gap-2 col-4 mx-auto mt-3">
+                <a asp-controller="Properties" asp-action="PropsList" asp-route-mode="5" class="btn btn-primary">Select properties</a>
+            </div>
+    }
+</div>
+
+@section Scripts {
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

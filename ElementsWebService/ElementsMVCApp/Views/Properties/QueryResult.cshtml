@@ -1,0 +1,59 @@
+﻿@model Dictionary<string, IEnumerable<IProperty>>
+
+<div class="container">
+    <div class="row justify-content-center">
+        @if (Model == null || Model.Count == 0 || Model.Values.Any(x => x == null || x.Count() == 0))
+        {
+            <h4>No elements was found for this query.</h4>
+        }
+        else
+        {
+            foreach (var pair in Model)
+            {
+                List<IProperty> list = pair.Value.ToList();
+                <div class="card mt-4">
+                    <div class="card-header text-center">
+                        <h3>@pair.Key</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>Value</th>
+                                    <th>Unit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var prop in list)
+                                {
+                                    <tr>
+                                        @{
+                                            bool isRadiiIonic = prop is RIProperty;
+                                            if (prop is RIProperty)
+                                            {
+                                                RIProperty riprop = ((RIProperty)prop);
+                                                string charge = $" [Charge = {riprop.Charge}";
+                                                string cn = riprop.CN.HasValue ? $", CN = {riprop.CN}]" : "]";
+                                                <th>@Html.Raw(prop.Name)<span>@(charge + cn)</span></th>
+                                            }
+                                            else
+                                            {
+                                                <th>@Html.Raw(prop.Name)</th>
+                                            }
+                                            <th>@Html.Raw(prop.GetFormattedValue())</th>
+                                            <td>@Html.Raw(prop.Unit)</td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        }
+        <div class="d-grid gap-2 col-4 mx-auto mt-3">
+            <a asp-controller="Properties" asp-action="PropsList" asp-route-mode="5" class="btn btn-primary">Change properties</a>
+        </div>
+    </div>
+</div>

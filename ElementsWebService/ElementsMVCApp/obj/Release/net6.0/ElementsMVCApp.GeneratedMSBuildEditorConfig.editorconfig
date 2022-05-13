@@ -1,0 +1,88 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ElementsMVCApp
+build_property.RootNamespace = ElementsMVCApp
+build_property.ProjectDir = D:\HSE\Курсач\Developing\ElementsWebService\ElementsMVCApp\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = D:\HSE\Курсач\Developing\ElementsWebService\ElementsMVCApp
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/ElementNotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xFbGVtZW50Tm90Rm91bmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/ElementPropsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xFbGVtZW50UHJvcHNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/LitRef.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xMaXRSZWYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/Mendel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xNZW5kZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/Partial/PartialValsTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xQYXJ0aWFsXFBhcnRpYWxWYWxzVGFibGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/PropsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xQcm9wc0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/PropsValues.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xQcm9wc1ZhbHVlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/Query.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xRdWVyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/QueryResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xRdWVyeVJlc3VsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/RecProps.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xSZWNQcm9wcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xTZXR0aW5ncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Properties/SettingsChanged.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGVydGllc1xTZXR0aW5nc0NoYW5nZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HSE/Курсач/Developing/ElementsWebService/ElementsMVCApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-6b2tu41tkz
