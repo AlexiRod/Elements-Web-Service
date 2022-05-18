@@ -626,7 +626,7 @@ namespace ElementsMVCApp.Controllers
         /// Получение всех свойств с их Id, названием и типом.
         /// </summary>
         /// <returns>Список всех свойств в формате Id, Название, Тип.</returns>
-        private async Task<List<Property>> GetAllPropertiesNames()
+        private async Task<List<Property>> GetAllPropertiesNames()  
         {
             List<Property> props = new List<Property>();
             HttpResponseMessage response = await client.GetAsync("api/properties/propsnames");

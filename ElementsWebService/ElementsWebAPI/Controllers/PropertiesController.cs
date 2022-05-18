@@ -6,13 +6,6 @@ using Newtonsoft.Json;
 
 namespace ElementsWebAPI.Controllers
 {
-    //
-    // Tests:
-    //
-    // https://localhost:7011/api/properties/queryprops?propsId=S12&propsId=S11&propsId=S15&lefts=0&lefts=0&lefts=0.1&rights=2&rights=2&rights=1
-    // https://localhost:7011/api/properties/queryprops?propsId=A6&propsId=C1&propsId=C2&lefts=10&lefts=50&lefts=50&rights=100&rights=2000&rights=3000
-   
-
     [ApiController]
     [Route("api/properties")]
     //[Produces("application/json")]

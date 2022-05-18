@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RkmA4K/i5ynhSELbyQD+kp+o2o4braDtr87wBl1ZtL4=",
+  "Hash": "Dwq3lVYJj+Puf1M67EfJNwFz2o391fejn2PsE+QCrOk=",
   "Source": "ElementsMVCApp",
   "BasePath": "_content/ElementsMVCApp",
   "Mode": "Default",
@@ -146,6 +146,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\HSE\\Курсач\\Developing\\ElementsWebService\\ElementsMVCApp\\wwwroot\\img\\chemistry.ico",
+      "SourceId": "ElementsMVCApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HSE\\Курсач\\Developing\\ElementsWebService\\ElementsMVCApp\\wwwroot\\",
+      "BasePath": "_content/ElementsMVCApp",
+      "RelativePath": "img/chemistry.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\chemistry.ico"
     },
     {
       "Identity": "D:\\HSE\\Курсач\\Developing\\ElementsWebService\\ElementsMVCApp\\wwwroot\\js\\site.js",

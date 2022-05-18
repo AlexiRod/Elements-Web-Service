@@ -54,14 +54,14 @@ namespace ElementsWebAPI.Entities
             using (var connection = _context.CreateConnection())
             {
 
-                string query = @$"SELECT * FROM ((SELECT [Article], [Source], [Vol], [Num], [Page1], [Page2] FROM [phases].[dbo].[bData] WHERE N = {id}) dat
-                                LEFT JOIN (SELECT TOP 1 N, [Year1], [Year2] FROM [phases].[dbo].[bYears] WHERE N = {id}) yer ON 1=1
-                                LEFT JOIN (SELECT TOP 1 N, [DOI] FROM [phases].[dbo].bPdf WHERE N = {id}) doi ON 1=1)";
+                string query = @$"SELECT * FROM ((SELECT [Article], [Source], [Vol], [Num], [Page1], [Page2] FROM [dbo].[bData] WHERE N = {id}) dat
+                                LEFT JOIN (SELECT TOP 1 N, [Year1], [Year2] FROM [dbo].[bYears] WHERE N = {id}) yer ON 1=1
+                                LEFT JOIN (SELECT TOP 1 N, [DOI] FROM [dbo].bPdf WHERE N = {id}) doi ON 1=1)";
                 LiteratureReference litref = connection.Query<LiteratureReference>(query).FirstOrDefault();
                 if (litref == null)
                     return "No data";
 
-                query = $"SELECT DISTINCT [Author] FROM [phases].[dbo].[bAuthors] WHERE N = {id}";
+                query = $"SELECT DISTINCT [Author] FROM [dbo].[bAuthors] WHERE N = {id}";
                 List<string> authors = connection.Query<string>(query).ToList();
                 litref.Authors = authors;
 
@@ -87,7 +87,7 @@ namespace ElementsWebAPI.Entities
 
             using (var connection = _context.CreateConnection())
             {
-                string query = @"SELECT Unit1, Unit2, Equation FROM [phases].[dbo].[rUnits]
+                string query = @"SELECT Unit1, Unit2, Equation FROM [dbo].[rUnits]
                                WHERE Equation IS NOT NULL ORDER BY Id";
                 List<Unit> list = connection.Query<Unit>(query).ToList();
                 foreach (var unit in list)
@@ -109,15 +109,15 @@ namespace ElementsWebAPI.Entities
             using (var connection = _context.CreateConnection())
             {
                 var elems = new List<Element>();
-                string query = @"SELECT el.Id, el.Elem as Symbol, aw.AtomicWeight, den.Density, melt.MeltingTemp, boil.BoilingTemp FROM [phases].[dbo].[xElements] el
+                string query = @"SELECT el.Id, el.Elem as Symbol, aw.AtomicWeight, den.Density, melt.MeltingTemp, boil.BoilingTemp FROM [dbo].[xElements] el
                                 INNER JOIN (SELECT * FROM (SELECT a.Symbol, a.Value as AtomicWeight, (ROW_NUMBER() OVER (PARTITION BY Symbol ORDER BY Symbol DESC)) row  
-                                FROM [phases].[dbo].[A6] a) un WHERE row = 1) aw ON aw.Symbol = el.Elem 
+                                FROM [dbo].[A6] a) un WHERE row = 1) aw ON aw.Symbol = el.Elem 
                                 INNER JOIN (SELECT * FROM (SELECT a.Symbol, a.Value as Density, (ROW_NUMBER() OVER (PARTITION BY Symbol ORDER BY Symbol DESC)) row  
-                                FROM [phases].[dbo].[I5] a) un WHERE row = 1) den ON den.Symbol = el.Elem 
+                                FROM [dbo].[I5] a) un WHERE row = 1) den ON den.Symbol = el.Elem 
                                 INNER JOIN (SELECT * FROM (SELECT a.Symbol, a.Value as MeltingTemp, (ROW_NUMBER() OVER (PARTITION BY Symbol ORDER BY Symbol DESC)) row  
-                                FROM [phases].[dbo].[C1] a) un WHERE row = 1) melt ON melt.Symbol = el.Elem 
+                                FROM [dbo].[C1] a) un WHERE row = 1) melt ON melt.Symbol = el.Elem 
                                 INNER JOIN (SELECT * FROM (SELECT a.Symbol, a.Value as BoilingTemp, (ROW_NUMBER() OVER (PARTITION BY Symbol ORDER BY Symbol DESC)) row  
-                                FROM [phases].[dbo].[C2] a) un WHERE row = 1) boil ON boil.Symbol = el.Elem 
+                                FROM [dbo].[C2] a) un WHERE row = 1) boil ON boil.Symbol = el.Elem 
                                 ORDER BY el.Id";
                 elems.AddRange(await connection.QueryAsync<Element>(query));
                 return elems;
@@ -134,9 +134,9 @@ namespace ElementsWebAPI.Entities
             using (var connection = _context.CreateConnection())
             {
                 string query = @"SELECT PropertyNumber as Id, PropertyName as Name, PropertyType as Value, Unit
-                                FROM[phases].[dbo].[PropertiesNames] 
-								INNER JOIN (SELECT NProp, Unit1 as Unit from [phases].[dbo].[rPropUnit] 
-								INNER JOIN [phases].[dbo].[rUnits] ON UnitId = Id) as u ON PropertyNumber = u.NProp  ORDER BY Name";
+                                FROM[dbo].[PropertiesNames] 
+								INNER JOIN (SELECT NProp, Unit1 as Unit from [dbo].[rPropUnit] 
+								INNER JOIN [dbo].[rUnits] ON UnitId = Id) as u ON PropertyNumber = u.NProp  ORDER BY Name";
                 return await connection.QueryAsync<Property>(query);
             }
         }
@@ -156,10 +156,10 @@ namespace ElementsWebAPI.Entities
                     string RIField = riPropIds.Contains(propId) ? ", Charge" : "";
                     string RIShanonField = propId == "S15" ? ", CN" : "";
                     string query = $@"SELECT pr.NProp as Id, Symbol as ElementSymbol, PropertyName as Name, Value, Unit, Comments, 
-                                    Nref as Reference{RIField}{RIShanonField} FROM [phases].[dbo].[{propId}] pr
-                                    INNER JOIN [phases].[dbo].[PropertiesNames] pn ON pr.Nprop = pn.PropertyNumber
-                                    INNER JOIN (SELECT NProp, Unit1 as Unit from [phases].[dbo].[rPropUnit] 
-									INNER JOIN [phases].[dbo].[rUnits] ON UnitId = Id) as u ON pr.Nprop = u.NProp 
+                                    Nref as Reference{RIField}{RIShanonField} FROM [dbo].[{propId}] pr
+                                    INNER JOIN [dbo].[PropertiesNames] pn ON pr.Nprop = pn.PropertyNumber
+                                    INNER JOIN (SELECT NProp, Unit1 as Unit from [dbo].[rPropUnit] 
+									INNER JOIN [dbo].[rUnits] ON UnitId = Id) as u ON pr.Nprop = u.NProp 
                                     WHERE Symbol = (SELECT Elem FROM xElements el WHERE el.Id = @Id) ORDER BY Name";
                     allProps.AddRange(riPropIds.Contains(propId) ?
                         (await connection.QueryAsync<RIProperty>(query, new { id })).OrderBy(x => x.Id) :
@@ -189,10 +189,10 @@ namespace ElementsWebAPI.Entities
             }
 
             string query = $@"SELECT pr.NProp as Id, Symbol as ElementSymbol, PropertyName as Name, Value, Unit, Comments, 
-                    Nref as Reference{RIField}{RIShanonField} FROM [phases].[dbo].[{tableFrom}] pr
-                    INNER JOIN [phases].[dbo].[PropertiesNames] pn ON pr.Nprop = pn.PropertyNumber
-                    INNER JOIN (SELECT NProp, Unit1 as Unit from [phases].[dbo].[rPropUnit] 
-					INNER JOIN [phases].[dbo].[rUnits] ON UnitId = Id) as u ON pr.Nprop = u.NProp 
+                    Nref as Reference{RIField}{RIShanonField} FROM [dbo].[{tableFrom}] pr
+                    INNER JOIN [dbo].[PropertiesNames] pn ON pr.Nprop = pn.PropertyNumber
+                    INNER JOIN (SELECT NProp, Unit1 as Unit from [dbo].[rPropUnit] 
+					INNER JOIN [dbo].[rUnits] ON UnitId = Id) as u ON pr.Nprop = u.NProp 
                     WHERE pr.NProp = @propId AND Symbol = (SELECT Elem FROM xElements el WHERE el.Id = @elemId)";
 
             using (var connection = _context.CreateConnection())
@@ -247,11 +247,11 @@ namespace ElementsWebAPI.Entities
             }
 
             string query = $@"SELECT pr.NProp as Id, Symbol as ElementSymbol, PropertyName as Name, Value, Unit, Comments, 
-                    Nref as Reference, el.Id as ElId{RIField}{RIShanonField} FROM [phases].[dbo].[{tableFrom}] pr
-                    INNER JOIN [phases].[dbo].[PropertiesNames] pn ON pr.Nprop = pn.PropertyNumber
-                    INNER JOIN (SELECT NProp, Unit1 as Unit from [phases].[dbo].[rPropUnit] 
-					INNER JOIN [phases].[dbo].[rUnits] ON UnitId = Id) as u ON pr.Nprop = u.NProp 
-                    INNER JOIN [phases].[dbo].[xElements] el ON el.Elem = pr.Symbol
+                    Nref as Reference, el.Id as ElId{RIField}{RIShanonField} FROM [dbo].[{tableFrom}] pr
+                    INNER JOIN [dbo].[PropertiesNames] pn ON pr.Nprop = pn.PropertyNumber
+                    INNER JOIN (SELECT NProp, Unit1 as Unit from [dbo].[rPropUnit] 
+					INNER JOIN [dbo].[rUnits] ON UnitId = Id) as u ON pr.Nprop = u.NProp 
+                    INNER JOIN [dbo].[xElements] el ON el.Elem = pr.Symbol
                     WHERE (pr.NProp = @propId){queryRec}{queryLeft}{queryRight} order by ElId";
 
             using (var connection = _context.CreateConnection())
